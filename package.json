@@ -1,0 +1,47 @@
+{
+	"name": "iptv.memorial",
+	"version": "0.0.0",
+	"description": "Utilities for parsing iptv.memorial channels.m3u and epg.xml",
+	"main": "dist/main.js",
+	"scripts": {
+		"start": "node --require ts-node/register/transpile-only src/main.ts",
+		"dev": "cross-env NODE_ENV=development node --require ts-node/register/transpile-only --require node-env-dev --inspect src/main.ts",
+		"watch": "cross-env NODE_ENV=development nodemon --quiet --no-stdin --watch src --ext ts --exec 'node --require ts-node/register/transpile-only --require node-env-dev --inspect' src/main.ts"
+	},
+	"dependencies": {
+		"camaro": "^6.0.4",
+		"dayjs": "^1.9.1",
+		"dotenv": "^8.2.0",
+		"exit-hook": "^2.2.0",
+		"fastify": "^3.5.0",
+		"fs-extra": "^9.0.1",
+		"iptv-playlist-parser": "^0.5.0",
+		"keyv": "^4.0.3",
+		"keyv-file": "^0.2.0",
+		"m3u8": "^0.0.10",
+		"m3u8-reader": "^1.1.0",
+		"m3u8-write": "^1.0.0",
+		"popsicle": "^12.0.6",
+		"rambda": "^6.2.0",
+		"rambdax": "^6.2.0",
+		"safe-stable-stringify": "^1.1.1",
+		"string-fn": "^2.12.2",
+		"uWebSockets.js": "github:uNetworking/uWebSockets.js#v18.5.0"
+	},
+	"devDependencies": {
+		"@types/fs-extra": "^9.0.1",
+		"@types/keyv": "^3.1.1",
+		"@types/node": "^14.11.2",
+		"cross-env": "^7.0.2",
+		"dts-generate": "^1.5.0",
+		"node-env-dev": "^1.9.0",
+		"nodemon": "^2.0.4",
+		"ts-node": "^9.0.0",
+		"typescript": "^4.0.3"
+	},
+	"license": "Unlicense",
+	"author": "Robert Laverty <roblav96@gmail.com> (https://github.com/roblav96)",
+	"homepage": "https://github.com/roblav96/iptv.memorial#readme",
+	"repository": "github:roblav96/iptv.memorial",
+	"bugs": "https://github.com/roblav96/iptv.memorial/issues"
+}
