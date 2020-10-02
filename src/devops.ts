@@ -1,12 +1,10 @@
-import * as util from 'util'
+import * as nodeEnvDev from 'node-env-dev'
 
-Object.assign(util.inspect.defaultOptions, {
-	depth: 4,
-} as util.InspectOptions)
+nodeEnvDev.depth(4)
 
-if (process.DEVELOPMENT) {
+if (process.env.NODE_ENV == 'development') {
 	process.nextTick(async () => {
-		Object.assign({}, globalThis, {
+		Object.assign({}, global, {
 			dayjs: await import('dayjs'),
 			R: await import('rambda'),
 			RR: await import('rambdax'),
