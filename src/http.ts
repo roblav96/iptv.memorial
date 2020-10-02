@@ -19,14 +19,16 @@ export async function get(
 	if (memoize == true) {
 		if (R.isType('NaN', ttl)) ttl = dayjs(0).add(1, 'hour').valueOf()
 		hash = utils.hash({ input, init })
+		let cached = await store.get(hash)
+		if (cached) {
+			return cached
+		}
 	}
-	// let hash = utils.hash({ input, init })
-	// console.log('hash ->', hash)
-	// // let response =
-	let response = await (await popsicle.fetch(input, init)).text()
-	console.log('response ->', response)
-	return response
-	// return await (await popsicle.fetch(input, init)).text()
+	let text = await (await popsicle.fetch(input, init)).text()
+	if (text && memoize == true) {
+		await store.set(hash, text, ttl)
+	}
+	return text
 }
 
 // export async function memoized<T = any>(
